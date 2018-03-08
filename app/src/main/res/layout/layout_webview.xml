@@ -26,7 +26,7 @@
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <webview.rea.com.webview.x5.PostWebView
+            <cn.webview.x5.PostWebView
                 android:id="@+id/webview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="webview.rea.com.webview">
+    package="cn.webview.com.webview">
 
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        >
 
-        <service android:name=".x5.download.download.DownloadAppService" />
+        <service android:name="cn.webview.x5.download.download.DownloadAppService" />
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="@string/AutoUpdateprovide"
