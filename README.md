@@ -25,11 +25,11 @@
 </pre>
 
 ##使用
-布局中加入以下
+布局中加入以下</br>
 <cn.webview.x5.ProgressWebView </br>
         android:id="@+id/webviewa"</br>
         android:layout_width="match_parent"</br>
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" /></br>
 <pre>
   <code>
         webView = findViewById(R.id.webview);
