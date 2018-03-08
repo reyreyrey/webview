@@ -26,7 +26,7 @@
 
 ##使用
 布局中加入以下
-<cn.webview.x5.ProgressWebView \n
+<cn.webview.x5.ProgressWebView </br>
         android:id="@+id/webviewa"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
