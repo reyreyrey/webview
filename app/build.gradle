@@ -1,0 +1,119 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven' // ADD THIS
+group='com.github.xinruzhou'
+version = '1.0'
+
+
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.0"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 27
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    lintOptions {
+        baseline file("lint-baseline.xml")
+        checkAllWarnings true
+        warningsAsErrors true
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/README'
+        exclude 'META-INF/README.txt'
+        exclude 'META-INF/readme'
+        exclude 'META-INF/readme.txt'
+
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'
+
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice'
+        exclude 'META-INF/notice.txt'
+
+        exclude 'META-INF/dependencies'
+        exclude 'META-INF/dependencies.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/DEPENDENCIES.txt'
+
+        exclude 'META-INF/PROPERTIES'
+        exclude 'META-INF/PROPERTIES.txt'
+        exclude 'META-INF/properties'
+        exclude 'META-INF/properties.txt'
+
+        exclude 'META-INF/LGPL2.1'
+        exclude 'META-INF/ASL2.0'
+
+        exclude 'META-INF/rxjava.properties'
+        exclude 'META-INF/rxjava.properties.txt'
+
+        exclude 'META-INF/RXJAVA.DEPENDENCIES'
+        exclude 'META-INF/RXJAVA.DEPENDENCIES.txt'
+
+        exclude 'META-INF/proguard/**'
+        exclude 'META-INF/*.version'
+    }
+
+/***For Android Studio 3.0+**/
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+
+
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile dep.appcompat
+    compile dep.design
+    //沉浸式状态栏
+    compile dep.barlibrary
+    compile files('libs/tbs_sdk_thirdapp_v3.3.0.1045_43300_sharewithdownload_withoutGame_obfs_20170605_170212.jar')
+    compile dep.okgo
+    //水平数字进度条
+    compile dep.numberprogressbar
+}
+
+
+
+// build a jar with source files
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError  false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// build a jar with javadoc
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
