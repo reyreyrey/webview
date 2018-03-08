@@ -25,12 +25,12 @@
 </pre>
 
 ##使用
-<pre>
-布局中假如以下
+布局中加入以下
 <cn.webview.x5.ProgressWebView
         android:id="@+id/webviewa"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+<pre>
   <code>
         webView = findViewById(R.id.webview);
         webView.getWebView().loadUrl("https://baidu.com");
